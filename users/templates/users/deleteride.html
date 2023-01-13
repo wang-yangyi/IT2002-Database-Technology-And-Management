@@ -1,0 +1,20 @@
+{%  extends 'users/main.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+		<p>Are you sure you want to delete ride?</p>
+			<form action="{% url 'deleteride'%}" method = "GET">
+				<input type="text" name="rideid" placeholder="Rideid">
+				<input type="submit" value="Delete">
+				{% if messages %}
+					{% for message in messages %}
+                		<p class="bg-danger p-d ml-b">{{ message }}</p>
+                	{% endfor %}
+                {% endif %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

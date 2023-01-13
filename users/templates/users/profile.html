@@ -1,0 +1,119 @@
+{% extends "users/main.html" %}
+
+{% block content %}
+<style>
+.container {
+	text-align:center;
+}
+#bids{
+	background-color:#7abecc;
+	
+}
+#pbids{
+	background-color:#7CD1C0;
+}
+#yourrides{
+	background-color:#FFE4B5;
+}
+.row {
+	margin-top:50px;
+}
+#add {
+	margin-left:500px;
+}
+#delete {
+	margin-left:500px;
+}
+
+</style>
+<br>
+<div class="container">
+	<h1>Profile</h1>
+	<p>Username: {{ user.username }}</p>
+	<p>Name: {{ user.name }} </p>
+	<p>Phone number: {{ user.number}} </p>
+	<p>Email: {{ user.email }} </p>
+	<p>License: {{ profilelicense.0 }}</p>
+	<p><a class="btn btn-sm btn-info" href="{% url 'addcar' %}">Add Car</a>
+</div>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Your bids:</h5>
+		<hr>
+		<div class="card card-body" id="bids">
+			<table class="table table-sm" >
+				<tr>
+					<th>Pick-up</th>
+					<th>Drop off</th>
+					<th>Date and time</th>
+					<th>Status </th>
+				</tr>
+				{% for bid in bids %}
+				<tr>
+					<th> {{ bid.0 }} </th>
+					<th> {{ bid.1 }} </th>
+					<th> {{ bid.2 }} </th>
+					<th> {{ bid.3 }} </th>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Passengers' bids:</h5>
+		<hr>
+		<div class="card card-body" id="pbids">
+			<table class="table table-sm" >
+				<tr>
+					<th>Username </th>
+					<th>Pick-up</th>
+					<th>Drop-off</th>
+					<th>Date and Time</th>
+					<th>Bid time</th>
+					<th>Accept/Reject</th>
+				</tr>
+				{% for p in passengers %}
+				<tr>
+					<th> {{ p.0 }} </th>
+					<th> {{ p.1 }} </th>
+					<th> {{ p.2 }} </th>
+					<th> {{ p.3 }} </th>
+					<th> {{ p.4 }} </th>
+					<th><a class="btn btn-sm btn-info" href="">Update</a></th>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class = "col-md-7">
+		<h5>Your Rides: <a class="btn btn-sm btn-info" id="add" href="{% url 'addride' %}">Add Ride</a><a class="btn btn-sm btn-info" id="delete" href="{% url 'deleteride' %}">Delete Ride</a></h5>
+		<hr>
+		<div class ="card card-body" id= "yourrides">
+			<table class="table table-sm">
+				<tr>
+					<th>Rideid</th>
+					<th>Pick-up</th>
+					<th>Drop-off</th>
+					<th>Date and Time</th>
+					<th>Seats</th>
+					<th>Price</th>
+				</tr>
+				{% for r in ridelist %}
+				<tr>
+					<th> {{ r.5 }} </th>
+					<th> {{ r.0 }} </th>
+					<th> {{ r.1 }} </th>
+					<th> {{ r.2 }} </th>
+					<th> {{ r.3 }} </th>
+					<th> {{ r.4 }} </th>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

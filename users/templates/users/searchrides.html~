@@ -1,0 +1,41 @@
+{% extends 'users/main.html'%}
+
+{% block content %}
+
+<h3> Rides </h3>
+<p>
+<form action="{% url 'searchrides'%}" method = "GET">
+	<input type="text" name="pickup" placeholder="Pick-up">
+	<input type="text" name="dropoff" placeholder="Drop-off">
+	<input type="submit" value="Search">
+</form>
+</p>
+	<br>
+	<div class="row">
+		<div class="col-md">
+			<div class="card card-body">
+				<table class = "table">
+					<tr>
+						<th>Pick-up</th>
+						<th>Drop-off</th>
+						<th>Date and time</th>
+						<th>Available seats</th>
+						<th>Price</th>
+						<th></th>
+					</tr>
+					{% for r in rides %}
+						<tr>
+							<td>{{r.1}}</td>
+							<td>{{r.2}}</td>
+							<td>{{r.3}}</td>
+							<td>{{r.4}}</td>
+							<td>{{r.5}}</td>
+							<td><a class="btn btn-sm btn-info" href="">Book</a><td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+
+{% endblock content %}

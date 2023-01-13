@@ -1,0 +1,38 @@
+{% extends 'users/main.html' %}
+
+{% block content %}
+
+<head>
+<style>
+body{
+	background-color: black;
+	}
+h1  {
+	color: white;
+	text-align:center;
+	}
+p   {
+	color: white;
+    text-align:center;
+	}
+.wrapper {
+    text-align: center;
+}
+.wrap {
+	font-family: consolas;
+	margin-top:250px;
+	margin-bottom:250px;
+}
+
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<h1> WELCOME TO ZOOMZOOM </h1>
+		<p>YOUR NO.1 CARPOOLING WEB</p>
+		<div class="wrapper">
+			<a class="btn btn-sm btn-info" href="{% url 'register' %}">Sign up now!</a>
+		</div>
+	</div>
+</body>
+{% endblock %}
